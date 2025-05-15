@@ -194,15 +194,14 @@ We further construct two novel dynamic expression datasets to train the models, 
 
 
 <!-- Paper Pipeline. -->
-
-<section class="section">
+ <section class="section">
   <div class="container is-max-desktop">
 <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">J-Reflectance Dataset</h2>
-        <img class="img-responsive" src="./static/images/pipeline.png" alt="Pipeline">
+        <h2 class="title is-3">FFHQ-BRDfExp Dataset</h2>
+        <img class="img-responsive" src="./static/images/jref.png" alt="Pipeline">
         <div class="content has-text-justified">
-        <span class="Pipeline">Overview of our proposed ExpDiff. Given neutral models and expression models, we first represent them in the unified representation and project them into the latent space through a frozen encoder. Then, we propose an attention-based diffusion model for expression asset generation. The textual prompts are encoded by CLIP to obtain semantic information, leading the denoising direction of the diffusion model.
+        <span class="Pipeline">Overview of our capture pipeline and datasets. (a) We utilize a Light Stage system to capture high-resolution facial images and employ skilled artists to meticulously process the data to ensure film-quality assets. (b) We showcase an identity's expression results, showing muscle-level geometry and BRDF textures with pore-level details, which can integrate seamlessly with the relighting applications.
         </div>
       </div>
     </div>
@@ -213,69 +212,16 @@ We further construct two novel dynamic expression datasets to train the models, 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <!-- Results. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Results</h2>
-        
-        <h3 class="title is-4">Reconstruction Results</h3>
+<div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">J-Reflectance Dataset</h2>
+        <img class="img-responsive" src="./static/images/ffhq-brdfexp.png" alt="Pipeline">
         <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can generate dynamic temporal-consistent meshes
-and corresponding 8K texture maps with pore-level details from calibrated multi-view videos. 
-          </p>
+        <span class="Pipeline">An example of BRDF texture and geometry in FFHQ-BRDFExp dataset.
         </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/talk.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-        <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can capture subtle facial changes and various extreme expressions, representing muscle tremors and dynamic wrinkles.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/exp1.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-<!--         <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can capture subtle facial changes and various extreme expressions, representing muscle tremors and dynamic wrinkles.
-          </p>
-        </div> -->
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/exp2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
       </div>
     </div>
-    <!--/ Results. -->
-
+    <!--/ Paper Pipeline. -->
   </div>
 </section>
   
