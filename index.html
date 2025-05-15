@@ -6,7 +6,7 @@
         <!-- content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos."> -->
   <!-- <meta name="keywords" content="Nerfies, D-NeRF, NeRF"> -->
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  <title>Topo4D++</title>
+  <title>ExpDiff</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -47,52 +47,33 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Topo4D++: Realistic Physical-based 4D Head Capture with Topology-Preserving Gaussian Splatting and Expression Priors</h1>
+          <h1 class="title is-1 publication-title">ExpDiff: Generating High-fidelity Dynamic Facial Expressions with BRDF Textures via Diffusion Model</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://cyh-sj.github.io/">
-                Yuhao Cheng</a><sup>1</sup>,
+                Yuhao Cheng</a>,
             </span>
             <span class="author-block">
-                Xuanchen Li<sup>1</sup>,
+                Xuanchen Li,
             </span>
             <span class="author-block">
               <a href="https://xingyuren.github.io/">
-                Xingyu Ren</a><sup>1</sup>,
+                Xingyu Ren</a>
             </span>
             <span class="author-block">
-              Haoyu Wang<sup>1</sup>,
+              Zhuo Chen,
             </span>
             <span class="author-block">
-              Haozhe Jia<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Di Xu<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Wenhan Zhu<sup>3</sup>,
-            </span>
-            <br>
-            <span class="author-block">
-              <a href="https://scholar.google.com.sg/citations?user=eUbmKwYAAAAJ&hl=en">
-              Bingbing Ni</a><sup>1</sup>,
+              Xiaokang Yang,
             </span>
             <span class="author-block">
               <a href="https://daodaofr.github.io/">
-                Yichao Yan</a><sup>1&dagger;</sup>
+                Yichao Yan</a><sup>&dagger;</sup>
             </span>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <sup>1</sup><a href="https://ai.sjtu.edu.cn/">MoE Key Lab of Artificial Intelligence, AI Institute, Shanghai Jiao Tong University</a>
-            </span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>2</sup>Huawei Cloud Computing Technologies Co., Ltd</span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <sup>3</sup><a href="https://excitai.com/">Xueshen AI</a>
+              <a href="https://ai.sjtu.edu.cn/">MoE Key Lab of Artificial Intelligence, AI Institute, Shanghai Jiao Tong University</a>
             </span>
           </div>
           
@@ -110,7 +91,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://github.com/cyh-sj/Topo4Dpp"
+                <a href="https://github.com/cyh-sj/expdiff"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -139,7 +120,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/cyh-sj/Topo4Dpp"
+                <a href="https://github.com/cyh-sj/expdiff"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -149,7 +130,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/cyh-sj/Topo4Dpp"
+                <a href="https://github.com/cyh-sj/expdiff"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -170,7 +151,7 @@
     <div class="hero-body">
       <img class="img-responsive" src="./static/images/teaser.png" alt="Teaser">
       <h2 class="subtitle has-text-justified">
-        <span class="Topo4D">Example results of our Topo4D++. Our method can produce temporal-consistent topological head meshes with high-fidelity 8K textures from calibrated multi-view videos. Captured 4D models can be applied to retargeting and relighting applications.
+        <span class="Topo4D">An example of our dynamic facial expressions generation method. Given a neutral-expression mesh and texture maps as input, our framework enables the generation of FACS-compliant expression meshes with pore-level dynamic BRDF textures through expression text prompts, achieving physically-based photo-realistic rendering.
       </h2>
     </div>
   </div>
@@ -184,16 +165,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recent significant advances have been made in high-quality 3D face reconstruction, but challenges remain in 4D face asset acquirement.
-            4D head capture aims to generate dynamic meshes in the same topology with corresponding UV maps from multi-view videos, which is widely utilized in movies and games for its ability to simulate facial muscle movements and recover dynamic wrinkles in pore squeezing.
-            The industry often adopts the method involving multi-view stereo and non-rigid alignment for topological head registration. However, this kind of approach is prone to errors and heavily relies on artists' time-consuming manual processing.
-            To simplify this process, we propose Topo4D++, a novel framework for automatic geometry and texture generation that optimizes densely aligned 4D heads and 8K BRDF maps directly from calibrated multi-view videos.
-            Specifically, we first represent the facial models as a set of dynamic 3D Gaussians with fixed topology in which the Gaussian centers are bound to the mesh vertices.
-            Afterward, we optimize geometry and texture frame-by-frame alternatively for dynamic head capture while maintaining temporal topology stability. Expression priors are employed in the process to achieve better initialization for extreme expressions.
-            Then, we can extract dynamic facial meshes in regular wiring arrangement and high-fidelity textures with pore-level details from the learned Gaussians, where displacement maps are also obtained for detailed geometry reconstruction.
-            Finally, we can obtain BRDF texture maps for physical-based rendering results under different light conditions.
-            We also propose a novel and comprehensive benchmark JHead to provide a more effective evaluation of 4D head capture methods.
-            Extensive experiments show that our method achieves superior results than the current SOTA face reconstruction methods in the quality of both meshes and textures. 
+            3D facial generation is a critical task for immersive multimedia applications, where the key challenge lies in synthesizing vivid expression meshes with corresponding dynamical textures. 
+Current approaches still have limitations in geometric-textural coherence and dynamic reflectance generation. 
+To address these challenges, we present ExpDiff, a framework that generates expression meshes and dynamic BRDF textures from a single neutral-expression face. To achieve effective generation, we propose an attention-based diffusion model to learn the relationship among different expressions.
+To ensure correspondence between geometry and texture, we introduce a unified representation that explicitly models geometric-textural interaction, and then encodes them by models trained on large-scale datasets into a latent space to maintain generalization.
+To achieve semantically coherent and physically consistent generation,  we propose to guide the denoising direction with specially designed textual prompts. 
+We further construct two novel dynamic expression datasets to train the models, setting new standards for asset quality (J-Reflectance) and identity diversity (FFHQ-BRDFExp), which are publicly released to advance the community. Extensive experiments demonstrate our method's superior performance in photorealistic facial animation synthesis. 
           </p>
         
         </div>
@@ -201,33 +178,31 @@
     </div>
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-         <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/Topo4D_intro.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
-
-
     <!-- Paper Pipeline. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Pipeline</h2>
         <img class="img-responsive" src="./static/images/pipeline.png" alt="Pipeline">
         <div class="content has-text-justified">
-        <span class="Pipeline">Overall pipeline of our Topo4D++ framework. (a) We initialize Gaussian attributes and establish topological correspondence with the startup mesh. (b) Take one frame as an example, the Gaussian meshes are first initialized with AU-based expression priors. Then geometry-related attributes in the Gaussian Mesh of the last frame are optimized by this frame under a set of topology-aware loss items. (c) We align the Gaussian surface with the rendering surface by Gaussian normal expansion to extract more precise meshes. (d) To learn pore-level ultra-high resolution texture and displacement maps, we build a dense mesh by densifying Gaussians in UV space. (e) Finally, we can employ our conversion model to generate albedo maps and specular maps for physical-based rendering.
+        <span class="Pipeline">Overview of our proposed ExpDiff. Given neutral models and expression models, we first represent them in the unified representation and project them into the latent space through a frozen encoder. Then, we propose an attention-based diffusion model for expression asset generation. The textual prompts are encoded by CLIP to obtain semantic information, leading the denoising direction of the diffusion model.
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Pipeline. -->
+  </div>
+</section>
+
+
+<!-- Paper Pipeline. -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+<div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">J-Reflectance Dataset</h2>
+        <img class="img-responsive" src="./static/images/pipeline.png" alt="Pipeline">
+        <div class="content has-text-justified">
+        <span class="Pipeline">Overview of our proposed ExpDiff. Given neutral models and expression models, we first represent them in the unified representation and project them into the latent space through a frozen encoder. Then, we propose an attention-based diffusion model for expression asset generation. The textual prompts are encoded by CLIP to obtain semantic information, leading the denoising direction of the diffusion model.
         </div>
       </div>
     </div>
@@ -301,84 +276,6 @@ and corresponding 8K texture maps with pore-level details from calibrated multi-
     </div>
     <!--/ Results. -->
 
-    <!-- Comparisons. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Comparisons</h2>
-        <h3 class="title is-4">Geometry Comparison</h3>
-<!--         <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can generate dynamic temporal-consistent meshes
-and corresponding 8K texture maps with pore-level details from calibrated multi-view videos. 
-          </p>
-        </div> -->
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/cmp_mesh.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-        <h3 class="title is-4">Texture Comparison</h3>
-<!--         <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can generate dynamic temporal-consistent meshes
-and corresponding 8K texture maps with pore-level details from calibrated multi-view videos. 
-          </p>
-        </div> -->
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/cmp_tex.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-        <h3 class="title is-4">Comparison on <a href="https://github.com/facebookresearch/multiface">
-                Multiface</a></h3>
-<!--         <div class="content has-text-justified">
-          <p>
-            <span class="dnerf">Topo4D</span> can generate dynamic temporal-consistent meshes
-and corresponding 8K texture maps with pore-level details from calibrated multi-view videos. 
-          </p>
-        </div> -->
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/cmp_multiface_1.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-         <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="./static/videos/cmp_multiface_2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-      </div>
-    </div>
-    <!--/ Comparisons. -->
-
   </div>
 </section>
   
@@ -388,9 +285,9 @@ and corresponding 8K texture maps with pore-level details from calibrated multi-
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-@inproceedings{cheng2025topo4d++,
-  title={Topo4D++: Realistic Physical-based 4D Head Capture with Topology-Preserving Gaussian Splatting and Expression Priors},
-  author={Cheng, Yuhao and Li, Xuanchen and Ren, Xingyu and Wang, Jianyu and Jia, Haozhe and Xu, Di and Zhu, Wenhan and Ni, Bingbing and Yan, Yichao},
+@inproceedings{cheng2025expdiff,
+  title={ExpDiff: Generating High-fidelity Dynamic Facial Expressions with BRDF Textures via Diffusion Model},
+  author={Cheng, Yuhao and Li, Xuanchen and Ren, Xingyu and Chen, Zhuo and Yang, Xiaokang and Yan, Yichao},
   year={2025}
 }
     </code></pre>
